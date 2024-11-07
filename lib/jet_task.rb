@@ -7,9 +7,9 @@ module JetTask
   # Your code goes here...
 end
 
-require_relative "jet_task/concerns/taggable"
-require_relative "jet_task/project"
-require_relative "jet_task/task"
-require_relative "jet_task/tag"
-require_relative "jet_task/tag_set"
-require_relative "jet_task/note"
+require_relative "jet_task/models/concerns/taggable"
+require_relative "jet_task/models/project"
+require_relative "jet_task/models/task"
+require_relative "jet_task/models/tag"
+require_relative "jet_task/models/tag_set"
+require_relative "jet_task/models/note"
