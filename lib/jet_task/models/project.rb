@@ -6,7 +6,7 @@ module JetTask
 
     def initialize(name: "Untitled", tags: [], tasks: [], notes: [])
       @name = name
-      @tags = tags
+      @tags = TagSet.new(tags: tags)
       @tasks = tasks
       @notes = notes
     end

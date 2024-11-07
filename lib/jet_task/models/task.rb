@@ -3,9 +3,15 @@ module JetTask
     attr_accessor :name, :completed
     include Taggable
 
+    def self.from_string(string)
+      name, tags = Parser.new.extract_tags_and_values(string)
+      new(name: name, tags: tags)
+    end
+
+    # @param [Array<Tag>] tags
     def initialize(name: "Untitled", tags: [], completed: false)
       @name = name
-      @tags = tags
+      @tags = TagSet.new(tags: tags)
       @completed = completed
     end
 
@@ -25,6 +31,8 @@ module JetTask
       return nil if sa.nil?
       Time.parse(sa)
     end
+
+
 
   end
 end
