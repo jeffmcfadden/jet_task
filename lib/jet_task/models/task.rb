@@ -5,12 +5,12 @@ module JetTask
 
     def self.from_string(string)
       name, tags = Parser.new.extract_tags_and_values(string)
-      new(name: name, tags: tags)
+      new(name: name.strip, tags: tags)
     end
 
     # @param [Array<Tag>] tags
     def initialize(name: "Untitled", tags: [], completed: false)
-      @name = name
+      @name = name.strip
       @tags = TagSet.new(tags: tags)
       @completed = completed
     end

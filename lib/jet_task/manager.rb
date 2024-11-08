@@ -17,6 +17,12 @@ module JetTask
       @notes = notes
     end
 
+    def save(io)
+      JetTask.logger.debug "Manager#save"
+      serializer = TaskPaperSerializer.new(projects: @projects, global_tasks: @global_tasks, notes: @notes)
+      serializer.write(io)
+    end
+
     def add_task(task_string:,project_name:)
       project = @projects.named(project_name)
       if project.nil?
@@ -26,6 +32,15 @@ module JetTask
       task = Task.new(name: task_string)
       project.tasks << task
     end
+
+    def add_project(project_name:)
+      project = @projects.named(project_name)
+      if project.nil?
+        @projects.add(Project.new(name: project_name))
+      end
+    end
+
+
 
   end
 end

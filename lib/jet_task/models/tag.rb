@@ -3,7 +3,7 @@ module JetTask
     attr_accessor :name, :value
 
     def initialize(name:, value: nil)
-      @name = name
+      @name = name.to_s.strip
       @value = value
     end
 

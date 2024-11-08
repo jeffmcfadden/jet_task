@@ -5,7 +5,7 @@ module JetTask
     attr_reader :projects
     
     def initialize(projects: [])
-      @projects = projects.map{ [_1.name, _1] }.to_h
+      @projects = projects.map{ [_1.name.downcase, _1] }.to_h
     end
 
     def add(project)
@@ -13,14 +13,14 @@ module JetTask
         project = project.new(name: project)
       end
 
-      @projects[project.name] = project
+      @projects[project.name.downcase] = project
     end
 
     alias_method :+, :add
     alias_method :<<, :add
 
     def remove(project)
-      @projects.delete(project.name)
+      @projects.delete(project.name.downcase)
     end
 
     alias_method :-, :remove
@@ -29,7 +29,8 @@ module JetTask
     # @param [String] name
     # @return [JetTask::Project, nil]
     def named(name)
-      @projects[name]
+      return nil if name.to_s.strip.empty?
+      @projects[name.downcase]
     end
 
     def size
