@@ -16,9 +16,7 @@ module JetTask
     end
 
     def due_at
-      da = tags.named("due")&.value
-      return nil if da.nil?
-      Time.parse(da)
+      tags.named("due")&.value if tags.named("due")&.value.is_a?(Time)
     end
 
     def overdue?
@@ -27,13 +25,15 @@ module JetTask
     end
 
     def start_at
-      sa = tags.named("due")&.value
-      return nil if sa.nil?
-      Time.parse(sa)
+      tags.named("start")&.value if tags.named("start")&.value.is_a?(Time)
     end
 
     def complete?
       @completed
+    end
+
+    def incomplete?
+      !complete?
     end
 
 

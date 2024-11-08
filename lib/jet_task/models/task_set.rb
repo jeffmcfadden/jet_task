@@ -36,6 +36,18 @@ module JetTask
       @tasks.size
     end
 
+    def overdue
+      @tasks.values.select(&:overdue?)
+    end
+
+    def complete
+      @tasks.values.select(&:complete?)
+    end
+
+    def incomplete
+      @tasks.values.select(&:incomplete?)
+    end
+
     alias_method :length, :size
     alias_method :count, :size
 

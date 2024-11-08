@@ -81,6 +81,8 @@ module JetTask
         @manager.save(File.open(resolved_projects_file, "w"))
       elsif command_name == "projects"
         @manager.projects.each{ |p| puts p.name }
+      elsif command_name == "touch" # Just re-serializes everything. Useful for nudging relative dates, etc.
+        @manager.save(File.open(resolved_projects_file, "w"))
       elsif command_name == "view"
         project_name = args.first
         p = @manager.projects.named(project_name)
