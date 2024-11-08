@@ -47,7 +47,10 @@ module JetTask
         # If so, we have a new project
         if line.strip[-1] == ":"
           # JetTask.logger.debug "Found a project: #{line}"
-          text, tags = extract_tags_and_values(line.strip.delete_suffix(":").strip)
+
+          stripped_line = line.strip.delete_suffix(":").delete_prefix("#").strip
+
+          text, tags = extract_tags_and_values(stripped_line)
 
           context = :project
           @projects << JetTask::Project.new(name: text, tags: tags)

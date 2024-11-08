@@ -25,7 +25,7 @@ require_relative "jet_task/models/task_set"
 require_relative "jet_task/models/tag"
 require_relative "jet_task/models/tag_set"
 require_relative "jet_task/models/note"
-
 require_relative "jet_task/parsing/parser"
-
+require_relative "jet_task/serializers/task_paper_serializer"
 require_relative "jet_task/manager"
+require_relative "jet_task/cli/cli"

@@ -32,6 +32,9 @@ module JetTask
       Time.parse(sa)
     end
 
+    def complete?
+      @completed
+    end
 
 
   end
